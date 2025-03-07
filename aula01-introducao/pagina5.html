@@ -12,7 +12,10 @@
 
     <script>
         let nome = window.prompt("Digite seu nome:");
-        document.getElementById("nome").innerHTML = "Olá, " + nome + "!";
+        // se usar o método querySelector permite usar 
+        // um seletor de CSS para localizar o elemento desejado
+        // em uma página HTML
+        document.querySelector("#nome").innerHTML = "Olá, " + nome + "!";
     </script>
 </body>
 </html>

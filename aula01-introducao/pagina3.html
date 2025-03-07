@@ -7,17 +7,20 @@
 </head>
 <body>
     <h1>Javascript</h1>
-    
 
     <p>Use a opção Inspecionar e acesse o menu "console"</p>
     <script>
         let a = 10;
         console.log("Escrito com console.log - valor de a:" + a);
-
-        if (a == 10) {
-            console.error("Esta é uma mensagem de erro");
+        // no Javascript para efetuar a comparação
+        // deve utilizar
+        // == vai comparar apenas o valor, assim 10 == "10" é verdadeiro 
+        // === vai comparar valor e tipo, assim 10 === "10" é falso
+        if (a == "10") {
+            console.error("Esta é uma mensagem de erro"); 
+            console.error("Esta é outra mensagem de erro");
         }
-        
+
     </script>
 </body>
 </html>
