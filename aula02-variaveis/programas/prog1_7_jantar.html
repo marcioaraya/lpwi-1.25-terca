@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo do valor do jantar</title>
+</head>
+<body>
+    <h1>Cálculo do valor do jantar</h1>
+    <script>
+        // exemplo 1.7 do livro Lógica de Programação e Algoritmos com Javascript
+        // Edécio Fernando Iepsen
+        // Novatec 
+
+        const jantar = Number(prompt("Valor do Jantar R$: ")) // lê o valor do jantar
+        const garcom = jantar * 0.10 // calcula variáveis de saída
+        const total = jantar + garcom;         
+        alert(`Taxa Garçom R$: ${garcom.toFixed(2)}\nTotal R$: ${total.toFixed(2)}` )   // exibe o resultado
+    </script>
+</body>
+</html>
