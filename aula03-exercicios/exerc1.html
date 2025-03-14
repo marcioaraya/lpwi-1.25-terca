@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 1</title>
+</head>
+<body>
+    <h1>Exercício 1</h1>
+    <p>
+        Elabore um programa que leia um número inteiro e
+        mostre seus vizinhos, isto é, o número anterior
+        e o posterior ao número informado.
+        Exemplo: se informar 15, deve mostrar 14 e 16.
+    </p>
+    <script>
+        const num = Number(prompt('Digite um número:'))
+        const numAnterior = num - 1;
+        const numPosterior = num + 1;
+        alert('Número anterior:'+numAnterior+'\nNúmero posterior:'+numPosterior)
+        alert(`Número anterior ${numAnterior}\nNúmero posterior: ${numPosterior}`)
+    </script>
+
+</body>
+</html>

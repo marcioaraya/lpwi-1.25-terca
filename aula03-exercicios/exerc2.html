@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 2</title>
+</head>
+<body>
+    <h1>Exercício 2</h1>
+    <p>Elabore um programa para uma pizzaria
+        que informe o valor a ser pago por
+        cada cliente. Calcule a taxa de serviço
+        e divida o valor total pela quantidade
+        de clientes informada.
+    </p>
+    <script>
+        const conta = Number(prompt("Valor da conta R$: ")) // lê o valor da conta
+        const qtdPessoas = Number(prompt("Quantidade de pessoas:"))
+        const taxa = conta * 0.10 // calcula o valor da taxa
+        const total = conta + taxa; // calcula total a pagar
+        const divTotal = total / qtdPessoas;
+
+        alert(`Taxa Garçom R$: ${taxa.toFixed(2)}\nTotal R$: ${total.toFixed(2)}\nDivisão: ${divTotal.toFixed(2)}`)   // exibe o resultado
+
+    </script>
+</body>
+</html>
