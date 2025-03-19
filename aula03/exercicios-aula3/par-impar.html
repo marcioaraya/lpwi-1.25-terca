@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,14 +28,14 @@
         frm.addEventListener("submit", (e) => {
             e.preventDefault()    // evita envio do form
             const numero = Number(frm.idNumero.value)
-            /*
-                        if (numero % 2 == 0) {
-                            resp1.innerText = `O número ${numero} é par! `
-                        } else {
-                            resp1.innerText = `O número ${numero} é ímpar! `
-                        }
-                            */
-            const parOuImpar = (numero % 2 == 0)?"par":"ímpar"               
+/*
+            if (numero % 2 === 0) {
+                resp1.innerText = `O número ${numero} é par! `
+            } else {
+                resp1.innerText = `O número ${numero} é ímpar! `
+            }
+*/
+            const parOuImpar = (numero % 2 === 0)?"par":"ímpar"               
             resp1.innerText = `O número ${numero} é ${parOuImpar}! `
 
         })
