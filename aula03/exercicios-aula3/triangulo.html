@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Elaborar um programa que leia três lados e
+        verifique se eles podem formar um triângulo.
+        Para formar um triângulo, um dos lados não pode ser maior
+        que a soma dos outros dois.
+        Caso possam formar um triângulo,
+        exiba também qual o tipo do triânguloa:
+        Equilátero (3 lados iguais),
+        Isósceles (2 lados iguais) e
+        Escaleno (três lados diferentes).
+
+    </p>
+    | <h1> Par ou ímpar</h1>
+    <form>
+        <p>Lado um:
+            <input type="number" id="idLadoUm" step="1" min="0" max="100" required>
+        </p>
+        <p>Lado dois:
+            <input type="number" id="idLadoDois" step="1" min="0" max="100" required>
+        </p>
+        <p>Lado Três:
+            <input type="number" id="idLadoTres" step="1" min="0" max="100" required>
+        </p>
+        <input type="submit" value="Par ou Ímpar">
+    </form>
+    <h3></h3>
+    <script>
+        // cria referência ao form e elementos de resposta do programa
+        const frm = document.querySelector("form");
+        const resp1 = document.querySelector("h3");
+
+        // cria um "ouvinte" de evento, acionado quando o botão submit for clicado
+        frm.addEventListener("submit", (e) => {
+            e.preventDefault()    // evita envio do form
+            // obtém o valor dos três lados
+            const ladoA = Number(frm.idLadoUm.value)
+            const ladoB = Number(frm.idLadoDois.value)
+            const ladoC = Number(frm.idLadoTres.value)
+            let situacao = ''
+            // verifica se os lados podem formar um triângulo
+            if ((ladoA < ladoB + ladoC) &&
+                (ladoB < ladoA + ladoC) &&
+                (ladoC < ladoB + ladoA)) {
+                    situacao = 'É possível formar um triângulo. '
+                    // verificar se é equilatero, isósceles ou escaleno
+                    let triangulo = ""
+                    if (ladoA==ladoB && ladoB==ladoC) {
+                        situacao  = situacao + "O triângulo é Equilátero"
+                    } else if ( (ladoA == ladoB || ladoB == ladoC || ladoA == ladoC)) {
+                        situacao  = situacao + "O triângulo é Isósceles"
+
+                    } else {
+                        situacao  = situacao + "O triângulo é Escaleno"
+                    }
+
+            } else {
+                situacao = 'Não é possível formar um triângulo.'
+            }
+
+            resp1.innerText = ` ${situacao}! `
+
+        })
+    </script>
+</body>
+</html>
