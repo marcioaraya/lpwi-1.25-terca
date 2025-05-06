@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Formulário Dois</h1>
+    <!-- 
+        action=nome do programa do servidor que receberá
+               os dados do formulário
+        method: pode ser GET ou POST
+        GET: dados aparecem na barra de endereços do navegador
+             tem limite de tamanho
+        POST: dados não aparecem na barra de endereços do navegador
+               não tem limite de tamanho
+
+    Exercício: 
+    1) experimente mudar o type de text para password
+    2) clique no submit e veja a barra de enderços
+    3) agora experimente alterar o método para POST
+    4) examine novamente a barra de endereços do navegador
+    -->
+    <form action="programa1.php" method="GET">
+        <label for="id_nome">Usuário</label>
+        <input type="text" 
+                id="id_nome" 
+                name="usuario" 
+                placeholder="Digite seu nome" 
+                value="Marcio Araya">
+        <br>
+        <input type="submit">
+        <input type="reset">
+    </form>
+</body>
+
+</html>

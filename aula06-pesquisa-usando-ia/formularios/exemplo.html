@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Formulário</h1>
+    <p>Preencha os dados abaixo:</p>
+    <p>Os campos com * são obrigatórios</p>
+    <!-- No elemento form:
+        - action indica o nome do programa no backend que receberá os dados deste formulário. 
+                 Se não for informado, fica subentendido que o programa será o mesmo que gerou 
+                 este formulário
+        - method: método que será usado para enviar os dados do navegador para o servidor (backend).
+                  Pode ter dois valores: GET ou POST
+                  - POST: os dados não aparecerão na barra de endereços do navegador. 
+                         não tem limite de tamanho. 
+                         Usado para maior privacidade e segurança. 
+                         Usado para upload de arquivos.
+                 - GET: os dados aparecerão na barra de endereços do navegador. 
+                        tem limite de tamanho (cerca de 2000 caracteres)-->
+    <form action="processa.php" method="get">
+        <fieldset>
+            <legend>Dados Pessoais</legend>
+            <!-- ATENÇÃO: o valor do atributo "for" do label deve ser igual ao valor do atributo "id" do input
+                 desta forma, cria-se uma conexão entre o label e o input correspondente.
+                 Que fará que a caixa ganhe foco se o label correspondente for clicado. 
+                 No caso de botões de rádio ou checkbox, se clicar no label o elemento correspondente será marcado -->
+            <label for="idnome">Nome</label>
+            <input type="text" id="idnome" name="nome" required>
+            <br>
+            <label for="iddt">Data de Nascimento</label>
+            <input type="date" id="iddt" name="dtnascimento" required>
+            <br>
+            <label for="idemail">E-mail</label>
+            <input type="email" id="idemail" name="email" required>
+            <br>
+            <label for="idfone">Telefone</label>
+            <input type="tel" id="idfone" name="telefone" required pattern="\(?\d{2}\)?\s?\d{4,5}-?\d{4}" title="Digite um número de telefone válido no formato (XX) XXXXX-XXXX ou (XX) XXXX-XXXX">
+            <br>
+        </fieldset>
+        <fieldset>
+            
+            <legend>Dados Acadêmicos</legend>
+            <Label id="idcurso">Curso</Label>
+            <select name="curso" id="idcurso">
+                <option value="1">ADS</option>
+                <option value="2">GTI</option>
+                <option value="3">CD</option>
+                <option value="4">SI</option>
+            </select>
+            <br>
+            <!-- ATENÇÃO: para que os botões de rádio formem um "grupo" e apenas um fique ativo, 
+                          é necessário que todos tenham o mesmo valor para o atributo "name", 
+                          no caso abaixo é "semestre"
+                          -->
+            <p>Semestre</p>
+            <!-- o atributo checked fará com que o botão de rádio já venha marcado
+                 é útil para definir um valor padrão ou para criar um 
+                 formulário de atualizaçao (neste caso, o checked será colocado 
+                 no elemento cujo valor estiver armazenado em um banco de dados)
+             -->
+            <input type="radio" name="semestre" value="1" id="idsem1" checked>
+            <label for="idsem1">1º</label>
+            <input type="radio" name="semestre" value="2" id="idsem2">
+            <label for="idsem2">2º</label>
+            <input type="radio" name="semestre" value="3" id="idsem3">
+            <label for="idsem3">3º</label>
+            <input type="radio" name="semestre" value="4" id="idsem4">
+            <label for="idsem4">4º</label>
+            <input type="radio" name="semestre" value="5" id="idsem5">
+            <label for="idsem5">5º</label>         
+        </fieldset>
+       <fieldset>
+        <!-- ATENÇÃO: o valor do checkbox será enviado pelo navegador, 
+                      APENAS se o checkbox for marcado
+                      Com isso, não é necessário o atributo "required" 
+                      Diferentemente dos botões de rádio, não é possível 
+                      criar um grupo de checkbox se usar o mesmo valor para 
+                      o atributo "name",
+                      ENTRETANTO, é possível criar um vetor para vários checkbox
+                      se colocar [] em frente do valor de name, 
+                      por exemplo: name="passatempo[]"--> 
+        <legend>Dados Profissionais</legend>
+        <label for="idtrab">Trabalha?</label>
+        <input type="checkbox" id="idtrab">
+        <br>
+        <label for="idloc">Local de trabalho</label>
+        <input type="text" id="idloc" name="localtrabalho" placeholder="Local de trabalho">
+        <br>
+        <label for="idexp">Descreva sua experiência</label>
+        <br>
+        <textarea id="idexp" rows="5" cols="80" name="exp" placeholder="Descreva sua experiência"></textarea>
+
+        </textarea>
+       </fieldset>
+       <!-- o "submit" intrui ao navegador que deve enviar os dados do formulário para o 
+        programa indicado no atributo "action" usando o método (GET/POST) definido no atributo "method"
+        -->
+        <input type="submit" value="Gravar">
+        <!-- o "reset" fará o formulário voltar aos valores originais que tinha quando foi carregado 
+             pela primeira vez. 
+             Os campos voltarão a ficar vazios (como no momento de criação de um registro) ou
+             com os valores que haviam sido carregados do banco de dados (no caso de atualização de um registro)
+             -->
+        <input type="reset" value="Limpar">
+    </form>
+</body>
+</html>
