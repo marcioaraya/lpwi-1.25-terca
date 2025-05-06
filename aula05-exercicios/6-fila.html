@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Fila de Atendimento</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 1rem;
+      margin: 5px 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f0f0f0;
+    }
+    h2 {
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Controle da Fila de Atendimento</h1>
+  <div>
+    <label for="nome">Nome:</label>
+    <input id="nome" type="text" placeholder="Digite seu nome">
+    <button onclick="entrarNaFila()">Entrar na fila</button>
+    <button onclick="atender()">Atender</button>
+  </div>
+
+  <h2>Pessoas na Fila</h2>
+  <div id="filaDisplay"></div>
+
+  <h2>Atendimentos Realizados</h2>
+  <div id="atendidosDisplay"></div>
+
+  <script>
+    const fila = [];        // [nome, tempoEntrada]
+    const atendidos = [];   // [nome, tempoEntrada, tempoAtendimento, tempoEspera]
+
+    const formatador = new Intl.DateTimeFormat('pt-BR', {
+      dateStyle: 'short',
+      timeStyle: 'medium'
+    });
+
+    function atualizarDisplays() {
+      const filaDisplay = document.getElementById('filaDisplay');
+      const atendidosDisplay = document.getElementById('atendidosDisplay');
+
+      // Fila - tabela com nome e hora de entrada
+      let tabelaFila = '<table><thead><tr><th>Nome</th><th>Data/Hora de Entrada</th></tr></thead><tbody>';
+      fila.forEach(([nome, tempoEntrada]) => {
+        tabelaFila += `<tr><td>${nome}</td><td>${formatador.format(tempoEntrada)}</td></tr>`;
+      });
+      tabelaFila += '</tbody></table>';
+      filaDisplay.innerHTML = tabelaFila;
+
+      // Atendidos - tabela com nome, entrada, atendimento e tempo de espera
+      let tabelaAtendidos = '<table><thead><tr><th>Nome</th><th>Entrada</th><th>Atendido</th><th>Tempo de Espera (s)</th></tr></thead><tbody>';
+      atendidos.forEach(([nome, entrada, atendimento, espera]) => {
+        tabelaAtendidos += `
+          <tr>
+            <td>${nome}</td>
+            <td>${formatador.format(entrada)}</td>
+            <td>${formatador.format(atendimento)}</td>
+            <td>${(espera / 1000).toFixed(2)}</td>
+          </tr>`;
+      });
+      tabelaAtendidos += '</tbody></table>';
+      atendidosDisplay.innerHTML = tabelaAtendidos;
+    }
+
+    function entrarNaFila() {
+      const inputNome = document.getElementById('nome');
+      const nome = inputNome.value.trim();
+      if (nome === '') {
+        alert('Por favor, digite um nome.');
+        return;
+      }
+      const tempoEntrada = Date.now();
+      fila.push([nome, tempoEntrada]);
+      inputNome.value = '';
+      atualizarDisplays();
+    }
+
+    function atender() {
+      if (fila.length === 0) {
+        alert('Não há ninguém na fila!');
+        return;
+      }
+      const [nome, tempoEntrada] = fila.shift();
+      const tempoAtendimento = Date.now();
+      const tempoEspera = tempoAtendimento - tempoEntrada;
+      atendidos.push([nome, tempoEntrada, tempoAtendimento, tempoEspera]);
+      atualizarDisplays();
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>Ping Pong</title>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 300px;
+        }
+
+        .input-group {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        button {
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+
+        #resultado {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="input-group">
+            <label for="inicio">Início:</label>
+            <input type="number" id="inicio">
+        </div>
+        <div class="input-group">
+            <label for="fim">Fim:</label>
+            <input type="number" id="fim">
+        </div>
+        <div>
+            <button id="btnMostrar">Mostrar</button>
+        </div>
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+        const btnMostrar = document.getElementById("btnMostrar");
+        const resultadoDiv = document.getElementById("resultado");
+        const inputInicio = document.getElementById("inicio");
+        const inputFim = document.getElementById("fim");
+
+        function pingPong() {
+            const inicio = parseInt(inputInicio.value);
+            const fim = parseInt(inputFim.value);
+            let output = "";
+
+            if (isNaN(inicio) || isNaN(fim)) {
+                resultadoDiv.textContent = "Por favor, insira números válidos.";
+                return;
+            }
+
+
+            if (inicio <= fim) {
+                for (let i = inicio; i <= fim; i++) {
+                    if (i % 3 === 0 && i % 5 === 0) {
+                        output += "PINGPONG "
+                    } else if (i % 3 === 0) {
+                        output += "PING "
+                    } else if (i % 3 === 0) {
+                        output += "PONG "
+                    } else
+                        output += i + " ";
+                }
+            } else {
+                output = "O valor de 'Início' deve ser menor ou igual a 'Fim' para contagem crescente.";
+            }
+
+
+            resultadoDiv.textContent = output;
+        }
+
+        btnMostrar.addEventListener("click", function () {
+            pingPong();
+        });
+
+    
+    </script>
+</body>
+</html>

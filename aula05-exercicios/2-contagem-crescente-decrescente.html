@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <title>Contagem Crescente e Decrescente</title>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 300px;
+    }
+
+    .input-group {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    button {
+      padding: 10px 15px;
+      cursor: pointer;
+    }
+
+    #resultado {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="input-group">
+      <label for="inicio">Início:</label>
+      <input type="number" id="inicio">
+    </div>
+    <div class="input-group">
+      <label for="fim">Fim:</label>
+      <input type="number" id="fim">
+    </div>
+    <div>
+      <button id="btnCrescente">Crescente</button>
+      <button id="btnDecrescente">Decrescente</button>
+    </div>
+    <div id="resultado"></div>
+  </div>
+
+  <script>
+    const btnCrescente = document.getElementById("btnCrescente");
+    const btnDecrescente = document.getElementById("btnDecrescente");
+    const resultadoDiv = document.getElementById("resultado");
+    const inputInicio = document.getElementById("inicio");
+    const inputFim = document.getElementById("fim");
+
+    function contar(ordem) {
+      const inicio = parseInt(inputInicio.value);
+      const fim = parseInt(inputFim.value);
+      let output = "";
+
+      if (isNaN(inicio) || isNaN(fim)) {
+        resultadoDiv.textContent = "Por favor, insira números válidos.";
+        return;
+      }
+
+      const passo = ordem === "crescente" ? 1 : -1;
+      if ((ordem === "crescente" && inicio > fim) || (ordem === "decrescente" && inicio < fim)) {
+        resultadoDiv.textContent = `O valor de 'Início' deve ser ${ordem === "crescente" ? "menor ou igual" : "maior ou igual"
+          } a 'Fim' para contagem ${ordem}.`;
+        return;
+      }
+
+      for (let i = inicio; ordem === "crescente" ? i <= fim : i >= fim; i += passo) {
+        output += i + " ";
+      }
+
+      resultadoDiv.textContent = output;
+    }
+
+    btnCrescente.addEventListener("click", function () {
+      contar("crescente");
+    });
+
+    btnDecrescente.addEventListener("click", function () {
+      contar("decrescente");
+    });
+  </script>
+</body>
+</html>

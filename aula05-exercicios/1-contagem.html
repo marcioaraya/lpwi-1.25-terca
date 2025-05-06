@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contagem</title>
+</head>
+<body>
+    <h1>Contagem</h1>
+    <div></div>
+    <script>
+        const numeros = document.querySelector("div")
+        let texto = ""
+        for(i=1;i<=100;i++){
+            texto +=   `<p>${i}</p>` // texto = texto +  `<p>${i}</p>`
+                //  `<p>${i}</p>` equivalente a '<p>' + i + '</p>'
+        }
+        numeros.innerHTML = texto
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>JavaScript Objects</h1>
+    <h2>Object Methods</h2>
+    <p>A method is a function definition stored as a property value.</p>
+
+    <p id="demo"></p>
+
+    <script>
+        const aluno = {
+            Nome: "Newton",
+            Nota1: 8,
+            Nota2: 2,
+            Media: null,
+            Situacao: null,
+            calcularMedia: function () {
+                console.log('dentro de calcularMedia')
+                return (this.Nota1 + this.Nota2) / 2;
+            },
+            verificaSituacao: function () {
+                console.log('dentro de verificaSituacao')
+                if (this.Media >= 6) {
+                    return "Aprovado"
+                } else if (this.Media >= 2) {
+                    return "Exame Final"
+                } else {
+                    return "Reprovado"
+                }
+
+            }
+        };
+
+
+        aluno.Media = aluno.calcularMedia()
+
+        aluno.Situacao = aluno.verificaSituacao()
+
+        console.log(aluno.Media)
+        console.log(aluno.Situacao)
+
+        document.getElementById("demo").innerHTML = aluno.media
+
+    </script>
+</body>
+</html>
